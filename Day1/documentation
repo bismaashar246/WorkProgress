@@ -1,0 +1,130 @@
+Day 1
+
+_____________________________________________________________________________________________________________________
+
+1. Execution context
+_____________________________________________________________________________________________________________________
+
+
+Video link : https://www.youtube.com/watch?v=ZvbzSrg0afE&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=3
+
+Notes:
+Execution Context
+> variable environment(memory component) : all the functions are stored as key value pairs in memory
+> Thread of execution(code component) : Whole code is executed in it 1 line at a time
+> Syncronous and single threaded language : can go to next line once the first line is executed
+
+______________________________________________________________________________________________________________________
+
+2. How JavaScript code is executed
+______________________________________________________________________________________________________________________
+
+
+Video link : https://www.youtube.com/watch?v=iLWTnMzWtj4&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=4
+
+Notes:
+> Memory creation phase
+> Code execution phase
+
+- an execution context is created inside the execution context when a function is called inside one.
+- call stack is used to manage all this and maintain the order of the execution of execution context.
+___________Code___________
+var num = 4
+function cube(num)
+{
+  return num * num * num;
+}
+
+var cubeofnum = cube ();
+var cubeof6 = cube (6);
+___________________________
+
+______________________________________________________________________________________________________________________
+
+3. The difference between var, let & const
+______________________________________________________________________________________________________________________
+
+Link : https://www.linkedin.com/pulse/var-let-const-javascript-khalid-mim-muzahid
+
+> use const when declaring variables that should not be reassigned. Embracing const encourages immutability, minimizing
+  accidental reassignment.
+    
+> when you anticipate a variable will undergo changes, employ let. By doing so, you explicitly indicate your intent to 
+  modify the variable, mitigating unnecessary redeclaration.
+  
+> var should be avoided unless strictly necessary, due to its function scope and the potential for variable leakage.
+______________________________________________________________________________________________________________________
+
+4. Hoisting: Variables & Functions
+______________________________________________________________________________________________________________________
+
+Video link : https://www.youtube.com/watch?v=Fnlnw8uY6jo&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=4
+
+> undefined (accessed before initialisation) vs not defined (not initialised)
+> Why undefined and function access possible?
+- memeory allocation is done before the function starts : variabe as undefined and function as a whole.
+ref : https://www.youtube.com/watch?v=B7iF6G3EyIk&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=7
+
+________Code : With Simple function_________
+
+getText(); //prints HelloWorld
+console.log(x); // shows undefined
+console.log(getText); //prints the function
+
+var x = 6;
+
+function getText()
+{
+  console.log("Hello World");
+}
+____________________________________________
+
+________Code : With arrow function_________
+
+getText(); //shows error getText is not a function because it is allocated undefined as a variable
+console.log(x);
+console.log(getText); 
+
+var x = 6;
+
+var getText = () => {
+  console.log("Hello World");
+}
+____________________________________________
+
+______________________________________________________________________________________________________________________
+
+5. Function invocation & variables environment
+______________________________________________________________________________________________________________________
+
+Video link : https://www.youtube.com/watch?v=gSDncyuGw0s&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=5
+
+> code is executed in order
+> for each function a separate execution cycle in code component and destroyed once the return call is executed.
+(code reference is functions.js)
+
+______________________________________________________________________________________________________________________
+
+6. What is this in javascript?
+______________________________________________________________________________________________________________________
+
+link : https://www.w3schools.com/js/js_this.asp
+
+> refers to an object in an object method
+> refers to a global object in alone or a function
+> refers to an element in an event
+> can be directly applied in a method to refer to any object
+
+____________________Code____________________
+
+const employee = {
+    
+        prop: 42,
+        name : "Bisma",
+        func: function () {
+          return (this.prop + this.name);
+        }
+};
+
+console.log(employee.func())
+____________________________________________
