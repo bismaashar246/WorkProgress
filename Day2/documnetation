@@ -1,0 +1,100 @@
+Day 2
+
+_____________________________________________________________________________________________________________________
+
+7.1. Currying
+_____________________________________________________________________________________________________________________
+
+
+link : https://builtin.com/software-engineering-perspectives/currying-javascript
+
+Notes:
+> transform a function with multiple arguments into a sequence of nesting functions.
+> number of arguments is called arity
+> sum(a, b, c) -------> sum(a)(b)(c)
+> helps you avoid passing the same variable again and again.
+> create a higher order function
+> different from partial application as it has a single argument in each call.
+
+Code refernce : currying.js
+
+_____________________________________________________________________________________________________________________
+
+7.2. Proxy
+_____________________________________________________________________________________________________________________
+
+
+link : https://www.programiz.com/javascript/proxies#google_vignette
+
+Notes:
+> has new Proxy() - the constructor.
+> target - the object/function which you want to proxy
+> handler - can redefine the custom behavior of the object
+> used for validation , read only view of an object and to call another function
+
+
+Code refernce : proxy.js
+Different cases are implemented and tested here
+
+______________________________________________________________________________________________________________________
+
+8. Different data types in JavaScript
+______________________________________________________________________________________________________________________
+
+link : https://www.educative.io/answers/what-are-the-data-types-available-in-javascript
+
+Notes:
+> Primitive data types are pre-defined and supported by the programming language.
+e.g. number , String , boolean , null value , undefined value
+> Non-primitive data types are created by the user and not pre-defined by the language itself.
+e.g. objects and arrays
+> don’t need to define the data type in JavaScript (dynamically typed language)
+
+Code refernce : datatypes.js
+All the datatypes are implemented and tested here
+______________________________________________________________________________________________________________________
+
+9. TypeCoercion
+______________________________________________________________________________________________________________________
+
+
+link : https://www.freecodecamp.org/news/js-type-coercion-explained-27ba3d9a2839
+
+Notes:
+> process of converting value from one type to another
+> explicit type coercion (or type casting) : Number(value)
+> implicit type coercion : 1 == null , 2/’5 , null + new Date()
+> === doesn't cater implicit type , == does
+> toString , toBoolean , toNumber
+
+______________________________________________________________________________________________________________________
+
+10.Different types of loops in JavaScript
+______________________________________________________________________________________________________________________
+
+
+link : https://www.educative.io/blog/javascript-loops-tutorial
+
+Notes: 
+> for loops
+> nested for loop
+> while 
+> do while
+
+Code refernce : loops.js
+All the loops are implemented and tested here
+______________________________________________________________________________________________________________________
+
+11. Arrays and their essential functions in JavaScript
+______________________________________________________________________________________________________________________
+
+
+link :https://www.w3schools.com/jsref/jsref_obj_array.asp
+
+Notes:
+> All potential array methods implemented 
+> One array can have different datatype values
+> If out of bound index is accessed it show out of bound
+
+Code refernce : arrays.js
+
