@@ -1,0 +1,117 @@
+Day 3
+_____________________________________________________________________________________________________________________
+
+12. ScopeChain & Lexical Scope
+_____________________________________________________________________________________________________________________
+
+
+video link : https://www.youtube.com/watch?v=uH-tVP8MUs8&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=9
+
+Notes:
+> scope is where you can access a specific variable 
+> inside the scope = can be accessed
+> lexical means in hirerchy/in order e.g. function c() is lexically inside function a()
+> you can access the variables of your parent function
+> scope chain is the whole chain of lexical environment through which the variables are tracked.
+
+
+Code refernce : lexical.js
+
+_____________________________________________________________________________________________________________________
+
+13. Temporal DeadZone
+_____________________________________________________________________________________________________________________
+
+
+video link : https://www.youtube.com/watch?v=BNC6slYCj50&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=10
+
+Notes:
+> let, const and var 
+> var stored in global space
+> let and const stored in separate memory space
+> temporal deadzone : e.g. if there is a let variable so it is the time between the let variable was hosted and till it is initialised
+> use const (best one) then let (better) then var (use very consiously)
+> keep the initialization on the top to decrease the temporal deadzone
+
+
+Code refernce : types.js
+_____________________________________________________________________________________________________________________
+
+14. Closures
+_____________________________________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=qikxEIxsXco&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=13
+video link2: https://www.youtube.com/watch?v=eBTBG4nda2A&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=14
+
+Notes:
+> function c() is inside the function a() so c is enclosed inside a
+> fucntion bundled with its lexical scope.
+> It rememebers its lexical space and data
+> used in module design patterns, currying , memoize , iterators, state maintainenece in async and setTimeouts
+
+> setTimeouts:
+- in loop with let variable a new copy of variable is created everytime and a new closure is formed everytime with each of them. The values keep displaying with a time interval.
+
+- closures used incase of var -> wrap the setTimeout in a function.
+
+Code refernce : lexical.js , closure.js
+
+_____________________________________________________________________________________________________________________
+
+15. EventLoop
+_____________________________________________________________________________________________________________________
+
+
+video link : https://www.youtube.com/watch?v=8aGhZQkoFbQ
+link : https://codedamn.com/news/javascript/event-loop-concurrency
+https://dev.to/jeetvora331/difference-between-microtask-and-macrotask-queue-in-the-event-loop-4i4i
+
+Notes:
+> managing the execution of functions in the call stack 
+
+a. Is javascript synchronous or asynchronous? 
+- Inherently synchronous and single-threaded
+- can act as asynchronous using Promises, callbacks, async/await
+
+> block : e.g. var foo = $.getSync("foo.com"); console.log(foo);
+the browser is stuck and cannot to anything
+
+>use async callbacks to fix this
+
+b. Concurrency in JavaScript
+>  ability of JavaScript programs to execute multiple tasks concurrently. 
+>  achieved through asynchronous programming
+>  involves promises, callbacks and await
+
+c. WebApis? How does JavaScript get access to web APIs?
+>  enable JavaScript to interact with the browser 
+>  executed outside the main JavaScript thread, allowing the program to continue running without being blocked by the API call.
+
+d. how the process works using WebApis and callback?
+> e.g. if a timeout function its function call goes to the stack. The timer starts running and the variable resides in webapis waiting for the timer complete. As soon as the timer is complete, it pushes the call back to task queue. Since it is an event loop, the variable in the task queue is pushed back to the stack once the stack is cleared.
+> useful in scroll cases
+
+e. In the loop: https://www.youtube.com/watch?v=cCOL7MC4Pl0
+
+RequestAnimationFrames
+> setTimeout vs. rAF
+- setTimeout is faster e.g. a box would move faster that when we use rAF
+
+
+Microtasks & MacroTasks
+> task queue vs. microtask queue
+- The task queue holds callbacks for asynchronous operations like setTimeout() and setInterval(). The microtask queue, on the other hand, holds callbacks for Promise resolutions and other microtasks.
+
+> microtask vs. macrotask
+- event loop always gives higher priority to the microtask queue
+- macrotask queue contains the callbacks of operations that are less urgent 
+- order of execution
+1. sync code
+2. micro code
+3. macro code
+
+
+Code refernce : eventloop.js
+
+
+ 
