@@ -1,0 +1,91 @@
+Day 4
+_____________________________________________________________________________________________________________________
+
+16. Promises
+_____________________________________________________________________________________________________________________
+
+
+link : https://www.freecodecamp.org/news/guide-to-javascript-promises/
+
+Notes:
+> transform a function with multiple arguments into a sequence of nesting functions.
+> offer improved readability and error handling.
+> easier to manage complex asynchronous workflows then in callback.
+> callback hell = when there are nested callbacks due to more than one fetch requests
+> catch all errors even thrown exceptions and programming errors
+.then() vs async / await
+> Promise object can be:
+- pending = result is undefined 
+- fulfilled = result is a value
+- rejected = result is an error object
+> contains a resolve() and reject() function parameter
+> then() to create a callback for a promise.
+> catch() handles errors in a without requiring the nesting of error callback functions.
+> finally() helps prevent possible code repetition in .then() and .catch()
+> Promise.all handles the array of promises
+> How do you catch errors while using await? by using try-catch block
+
+Code reference : promises.js
+
+_____________________________________________________________________________________________________________________
+
+17. Mutation
+_____________________________________________________________________________________________________________________
+
+
+video link : https://www.youtube.com/watch?v=PuaxNa_4xrE
+https://www.freecodecamp.org/news/copying-stuff-in-javascript-how-to-differentiate-between-deep-and-shallow-copies-b6d8c1ef09cd/
+
+Notes:
+> means a change in the original code or data.
+> e.g. using toLowerCase() method to change the characters
+> toString to change an integer value to string
+> Shallow copy vs Deep copy
+- shallow copy = certain (sub-)values are still connected to the original variable.
+- deep copy = all of the values of the new variable are copied and disconnected from the original variable. 
+> Spread operator = spreads out values in a new object used to make deep copy
+
+Code reference : mutation.js
+
+_____________________________________________________________________________________________________________________
+
+18. Higher-Order Functions
+_____________________________________________________________________________________________________________________
+
+
+video link : https://www.youtube.com/watch?v=HkWxvB1RJq0&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=21
+
+Notes:
+> rather than copying same logic twice, use a highorder function to pass the logic
+> dynamic = you can keep adding logics
+> we can also use map it does the same thing
+> use Array.prototype.funcName to use map syntax
+
+Code reference : highorder.js
+_____________________________________________________________________________________________________________________
+
+19. Generator functions
+_____________________________________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=IJ6EgdiI_wU
+
+Notes:
+> * infront of the function
+> uses yield that is a special kind of return keyword for generators
+> placement of yield can be varied according to the output pattern requirement
+> same yield can be displayed more than once
+
+code reference: generators.js
+_____________________________________________________________________________________________________________________
+
+19. Errors
+_____________________________________________________________________________________________________________________
+
+link : https://www.youtube.com/watch?v=BNC6slYCj50&list=PLlasXeu85E9cQ32gLCvAvr9vNaUccPVNP&index=10
+
+Notes:
+> syntax error: doing something that is not allowed e.g. redeclaration of a let variable
+> type error: assigning value later to a const variable
+> refernce error: accessing something that is in a memory space which can not be accessed.
+
+Code reference : types.js
