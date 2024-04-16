@@ -1,0 +1,70 @@
+React Day 1
+______________________________________________________________________________________________________________________
+
+1.What is React & How does it work?
+______________________________________________________________________________________________________________________
+
+
+link : https://www.freecodecamp.org/news/react-under-the-hood/
+
+Notes: 
+> maintains a tree for you.
+> allows you to effectively re-construct your DOM in JavaScript and push only those changes to the DOM which have 
+  actually occurred.
+> JSX = bring the cleanliness of HTML to JavaScript.
+> ReactDOM = recursively creates nodes depending on their 'type' property and appends them finally to the DOM.
+
+______________________________________________________________________________________________________________________
+
+2.Why React is not SEO friendly?
+______________________________________________________________________________________________________________________
+
+
+link : https://www.toptal.com/react/react-seo-best-practices
+https://www.linkedin.com/pulse/how-make-react-website-seo-friendly-proven-techniques-ul8rc
+Notes:
+> All the changes are made to the UI or DOM through React's engine
+> React enables the creation of Single page applications which display their full content only after all resources
+  have loaded. 
+> Next.js Server-Side Rendering is used for seo-friendly purposes
+
+______________________________________________________________________________________________________________________
+
+3.Virtual DOM vs Real DOM
+______________________________________________________________________________________________________________________
+
+
+link : https://www.freecodecamp.org/news/react-under-the-hood/
+https://overreacted.io/react-as-a-ui-runtime/
+video link : https://www.youtube.com/watch?v=rysTbzKOEO0
+
+Notes: 
+> DOM = It is a tree structure that keeps all attributes in an order
+- DOM manipulation includes : querying , updating , rendering
+> virtual DOM = this object is an in-memory copy of the original DOM where all updates are done
+- if a change occurs then another virtual DOM is created for the change and comparison is done to identify the change which 
+  is then incorporated to original DOM in batch update
+> Reconciliation (the above vitual DOM concept) 
+- React does lazy reconcilation and only modify the changed attribute for example:
+Diffing algorithm:
+
+- if command 1 = <img className="class-1" alt="stuff" />
+  and command 2 = <img className="class-1" alt="something else" />
+  only attribute change so React will only modify the alt attribute because rest is the same
+  
+- if command 1 = <div className="class-1"><p>I did not change</p></div>
+  and command 2 = <p className="class-1"><p>I did not change</p></p>
+  Root is changed so it will have to destroy all the children and create again because React does not know if there was 
+  any change in the child or not
+  
+- <ul><li>apple</li></ul> => <ul><li key = "a">apple</li></ul> use a key to make the comparison easy in diffing
+
+> React as UI Runtime
+- host instances:
+- Nodes that have their own properties e.g. view.tintColor
+- It is described by a react element e.g.this element describes a button with blue class. When it will be rendered by
+  React it will create a <button> host instance for 'blue' class.
+{
+  type: 'button',
+  props: { className: 'blue' }
+}
