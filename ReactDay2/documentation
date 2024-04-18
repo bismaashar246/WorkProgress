@@ -1,0 +1,140 @@
+React Day 1
+______________________________________________________________________________________________________________________
+
+4.Components
+______________________________________________________________________________________________________________________
+
+link : https://levelup.gitconnected.com/types-of-react-components-a38ce18e35ab
+video link : https://www.youtube.com/watch?v=yc6elaGOoGQ
+Notes:
+> same as JavaScript functions but work individually
+> return JSX code as elements for our UI.
+> Different types 
+- functional:  
+  -> They are easy to read, debug, and test and commonly used these days.
+  -> functions that return JSX. Can do more stuff with React Hooks.
+  -> const HelloWorld = () => {return (<div></div>)}
+- class:
+  -> classes that can manipulate state, props, and lifecycle methods.
+  -> Class components use extends React.Component after declaring the class 
+- pure:
+  -> They do not depend or modify the state of variables outside its scope.
+  -> pure components perform shallow comparisons on state change. 
+  -> If the previous state or props are the same as the next, the component is not re-rendered.
+- high-order
+  -> functions that return a component.
+  -> They are used to share logic with other components.
+  -> this.props.myArray.map((element) => (<MyComponent />)) //we can return one or multiple components
+  -> HOCs are very useful to render multiple components dynamically, depending on the given data.
+
+> Difference between class & functional
+- class components have render()
+- class components extend Component
+- State: class requires a constructor where we define the state and pass props
+         functional is easier => const [name , setName] = useState(true);
+- props: class have super(props) where it sends the prop to the parent class 'this.props.emotion'
+         functional directly use the props 'props.emotion'
+
+> Lifecycle of class & functional component
+- class component
+  -> componentDidMount : when component render first time
+  -> componentDidUnmount : when component is removed
+  -> componentDidUpdate : when a change happens in the component
+  
+- functional component
+  -> useEffect to show the rendering and update
+  -> a return statement in it to show the component removal
+  -> no specific lifecycle
+
+> when is react component re-rendered? (not in pure)
+- setState() is called
+- props values are updated
+- forceUpdate() is called
+
+______________________________________________________________________________________________________________________
+
+5.React Docs
+______________________________________________________________________________________________________________________
+
+link : https://legacy.reactjs.org/docs/hello-world.html  (Main Concepts)
+
+Notes: 
+1. Hello World
+> you can render attributes and components in the root directly
+> const root = ReactDOM.createRoot(document.getElementById('root'));
+  root.render(<h1>Hello, world!</h1>);
+
+2. Introducing JSX
+> syntax : const element = <h1>Hello, world!</h1>;
+> produces react elements
+> can pass a js expression or call a function too in curly brackets
+> may contain children too
+> JSX object 2 types:
+
+Type 1:
+const element = (
+  <h1 className="greeting">
+    Hello, world!
+  </h1>
+);
+
+Type 2:
+const element = React.createElement(
+  'h1',
+  {className: 'greeting'},
+  'Hello, world!'
+);
+
+3. Rendering Elements
+> use root.render(element) : element that is to be rendered
+> only the change is rendered not the whole tree
+
+
+4. Components and Props
+> a compinent is valid when it accepts a single 'props'
+> can import and render a component by its name
+> All React components must act like pure functions with respect to their props.
+
+5. State and Lifecycle
+> Converting a function to a class
+> Creating a separate class component and rendering it to the root
+> Class component lifecycle
+> creating a setState()
+> state updates asynchronous:
+- this.props and this.state upgrade asynchronously so when useing together create a setState function than an object
+
+Wrong: race condition may apply and the counter state may not have the updated value at the time of increment
+this.setState({
+  counter: this.state.counter + this.props.increment,
+});
+
+Correct: the current values are taken as parameters so correct increment happens
+
+this.setState((state, props) => ({
+  counter: state.counter + props.increment
+}));
+
+. state update merge:
+constructor(props) {
+    super(props);
+    this.state = {
+      posts: [],      
+      comments: []    
+    };
+}
+  
+separate setState can be applied on posts and comments e.g.
+componentDidMount() {
+    fetchPosts().then(response => {
+      this.setState({posts: response.posts});
+    });
+
+    fetchComments().then(response => {
+      this.setState({comments: response.comments});
+    });
+}
+  
+6. Handling Events
+> onClick , onSubmit , onToggle etc
+> triggers a function or an event once the action is taken
+> passing arguments to eventhandler : <button onClick = {()=>{this.increment()}}>Click me</button>
