@@ -1,0 +1,126 @@
+
+
+link : https://react.dev/learn/responding-to-events
+
+- anonymous function for event handling: <button onClick={() => alert('You clicked me!')}>
+
+What is a component life cycle
+-series of phases that a React component goes through 
+-lifecycle phases crucial for managing state, performing side effects, and optimizing performance in React applications.
+
+What are life cycle methods
+-methods that are invoked automatically at various points during the lifecycle of a component.
+
+Life cycle methods in class components
+link: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+- class component
+  
+  -> componentDidMount : when component render first time -> fetch data/ initialize timer
+  constructor -> render() -> DOM update -> componentDidMount
+  
+  -> componentWillUnmount : when component is removed / perform clean up of event listeners/timers
+  newprop/setState/forceUpdate -> render() -> DOM update -> componentDidMount
+  
+  -> componentDidUpdate : when a change happens in the component/ state change / prop change (recieved again)
+  
+  -> componentDidCatch(): Executed when an error is thrown during rendering in the component tree below this component. This is used for error boundaries.
+  
+  -> shouldComponentUpdate(): allows you to control whether a component should re-render or not
+  
+- render() method should be pure - cannot modify state inside
+
+- constructor() has super , state , bind - to ensure value of this is correctly set
+
+
+Life cycle methods in functional components
+
+useEffect() for :
+mounting -> show inside useEffect function
+updating -> [count] send the parameter along in the useEffect function
+unmounting -> show in the return of the useEffect function
+
+
+What is state in react functional and class components
+
+class:
+-initialised in constructor - to ensure the initial state is set correct
+-use setState method to update
+
+functional:
+- react hooks - useState
+- two parameter: age - current state value , setAge - function that allows to update the state value
+
+
+How to pass data from parent to child via props
+we can send simple props as a parameter
+we can create an object props too and send in an if/else condition
+children is a special prop that represents the content between opening and closing tag
+
+e.preventDefault()
+
+> Conditional Rendering
+
+link: https://legacy.reactjs.org/docs/conditional-rendering.html
+
+- works the same way as conditions
+- you can add 
+- true && expression always evaluates to expression, and false && expression always evaluates to false.
+- inline if/else condition ? true : false.
+- To prevent Component from Rendering return null instead of its render output.
+
+> List and Keys
+
+link: https://legacy.reactjs.org/docs/lists-and-keys.html
+
+- <li> : list item //a bullleted list
+- <ul> : unordered list
+- <ol> : ordered list
+- use map() to create a list from an array
+- A “key” is a special string attribute you need to include when creating lists of element
+- key = to identify which items have changed, are added, or are removed.
+- key is not rendered on the UI just for backend purposes
+- index can be used as key if no specific id and order is fixed
+- keys don’t need to be globally unique e.g. for different arrays
+- if you need to pass a key to component, pass it explicitly with a different name
+e.g. const content = posts.map((post) =>
+     <Post  key={post.id}    
+     id={post.id}    
+     title={post.title} />);
+
+
+> Forms
+
+link: https://legacy.reactjs.org/docs/forms.html
+https://blog.stackademic.com/immutable-vs-mutable-approach-mastering-react-state-updates-59d2787b4840
+
+> elements that maintain their own state: <input> , <textarea> , <select>
+> An input form element whose value is controlled by React in this way is called a “controlled component"
+> use <select> tag to create a dropdown
+- <select multiple={true} value={['B', 'C']}> : to select multiple options
+> ref can be used for uncontrolled components
+- in React, state is mutable by defualt
+- <input type = 'file' /> is an uncontrolled component => read-only value
+- in <input value = 'hi'> means input is locked 
+     <input value = {null}> means input is editable
+     
+- mutable vs immutable
+
+link : https://blog.stackademic.com/immutable-vs-mutable-approach-mastering-react-state-updates-59d2787b4840
+
+- mutable state: React will re-render the component and its child components, even if the state doesn't change.
+- immutable state: don’t directly modify the existing state ensuring re-rendering ocuurs only when needed e.g. spread operator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
