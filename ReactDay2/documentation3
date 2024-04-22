@@ -1,0 +1,61 @@
+
+10. Lift State Up
+______________________________________________________________________________________________
+
+link : https://legacy.reactjs.org/docs/lifting-state-up.html
+video link : https://www.youtube.com/watch?v=fGaEOESdPVI
+
+Notes: 
+- if different components need to reflect the same changing data -> lift shared state up
+- There should be a single “source of truth” for any data that changes in a React application.
+- The Data Flows Down : when parent passes its state to child as props 
+- In this we pass data from child to parent -> sent getData as a prop from parent to child and
+child assigns the answer to that function
+-  Lifting state up eliminates the need for prop drilling by providing a centralized location for managing shared state.
+- used for separation of concerns
+- enable sibling components communication in parent component
+
+code refernce: Form.js , Temperature.js
+
+______________________________________________________________________________________________
+
+11. Composition vs Inheritance
+______________________________________________________________________________________________
+
+link : https://legacy.reactjs.org/docs/composition-vs-inheritance.html
+
+Notes: 
+- containment if components don't know about their children, they can use children prop to pass children elements -> anything inside the two tags is passed in children prop
+
+1. Inheritance:
+- child class inherits the properties of parent class
+- not advised to do
+- a lot of code duplication if need to add new things
+
+code reference: Animal.js
+
+2. Composition:
+
+video link : https://www.youtube.com/watch?v=llBV_fNJXyQ
+
+- send content as children props between the tags and it will be displayed
+- Specialization : we can create a type of the component that caters a specific style and pass it to the original component
+
+code reference: Player.js , ShowText.js
+
+______________________________________________________________________________________________
+
+12. Thinking In React
+______________________________________________________________________________________________
+
+link : https://legacy.reactjs.org/docs/thinking-in-react.html
+
+Notes: 
+- It makes you walk through the entire thought process
+- take care of single responsibility principle 
+- separate the UI into components
+- arrange the components in hierarchy
+- build a static version in react
+- identify the states
+- decide where the state should be
+- decide the data flow
