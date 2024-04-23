@@ -1,0 +1,167 @@
+______________________________________________________________________________________________
+
+> Functional Components : Hooks
+______________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=TNhaISOUy6Q
+
+> What is a hook?
+- a function that lets you “hook into” React features. 
+- used when you have to add some state to a function
+- to compensate for the lifecycle that is avaialable in class function
+
+
+> Rules of Hooks
+1. don't call inside loops or conditions 
+- As long as the order of the Hook calls is the same between renders, React can associate some local state with each of them
+- for example if one of the hooks is in condition and is skipped, the order of the hooks will be changed and react wouldn't know what to return
+
+2. Don't call hooks from regular JavaScript functions
+- call from react function components or custom hooks
+
+
+- ESLint Plugin used to force implement these two rules
+- npm install eslint-plugin-react-hooks --save-dev
+- // Your ESLint configuration
+{
+  "plugins": [
+    // ...
+    "react-hooks"
+  ],
+  "rules": {
+    // ...
+    "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+    "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
+  }
+}
+
+> Building own hooks
+- traditional ways of sharing stateful logic: render props , high-order components
+- custom hooks are a mechanism to reuse stateful logic 
+- It is a JavaScript function whose name starts with ”use” and that may call other Hooks. 
+- when two functions rely on the same logic e.g. checking friend's online status then create a custom hook and call it
+
+
+
+1. useState
+__________________________________________________________________________________________________
+
+- const [count, setCount] = useState()
+- It returns a pair of values: the current state and a function that updates it.
+- read state : in class = this.state.count , function = count
+- update state : in class = this.setState() , in function setCount()
+- “array destructuring” : when we set the two variables equivalent to the actual parameters in []. This helps to set multiple states in one component using different names
+
+
+2. useEffect
+__________________________________________________________________________________________________
+
+-  useEffect(() => {
+        
+        console.log("Turn changed to " + turn);
+        
+        return();
+
+    }, [turn]);
+    
+- can implement did mount , update and unmount
+- used to tell React that your component needs to do something after render. 
+- useEffect inside the component lets us access the count state variable or any props.
+- Runs after every render by default
+- Use multiple effects to separate concerns 
+
+
+3. useRef
+__________________________________________________________________________________________________
+
+video link: https://www.youtube.com/watch?v=t2ypzz6gJm0
+
+- used like setState but does not trigger rerender when the value changes
+- used get HTML elements directly from the DOM
+- It can be used to store a mutable value that does not cause a re-render when updated
+- useRef() only returns one item
+- e.g. useRef is prefered for count increment
+- const count = useRef(0) and then count.current increment in useEffect
+- focus -> set the focus on the currect input (alternate for onChange)
+- does not change state only manually set value
+
+code : Counter1.js (prev implementation)
+
+4. useMemo
+__________________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=THL1OPn72vo&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h&index=3
+
+- Memoization implements the cashing process to save some data already
+- there can be a function that we cache 
+- has a list of dependensies -> thing that changes 
+- the memory gets larger everytime you use Memo because it saves the previous value
+- additional memory uses
+- use it when performance benefits are required and called function is very slow
+- to compare two different functions , objects
+- everytime the function is called, it is being recreated over and over and new function is passed as prop e.g. if i change the theme to dark it will recreate the change nnumber function again
+- takes the value and returns the return value of that function
+-  referential equality is essentially defines whether or not the references of two values are the same e.g. {} === {} will be false because they refer to different places in memory
+
+code : List.js
+
+5. useCallback
+__________________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=_AyFP5s69N4&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h&index=7
+
+- same signature as useMemo
+- it only recreate the function when the input parameter is changed
+- returns the whole function
+
+> useMemo vs. useCallback
+- If you need to memoize a function that will be passed down to child components as a prop, use useCallback.
+- If you need to memoize the result of a computation and that result can be any value, use useMemo.
+
+code : List.js
+
+6. useReducer
+__________________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=kK_Wqx3RnHk&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h&index=6
+ 
+- use when you have a complex component that contains a lot of local state 
+- Redux -> a different way to manage state
+- Action -> reducer -> Store -> UI -> Action 
+- two parameters: 
+1.state -> reactive state
+2.dispatch -> function that dispatch an action that can be a string + optional data payload
+- use an object as a parameter
+- use a switch statement to decide on the action 
+- slow function
+- instead of multiple callbacks we have single function that takes in different actions based on what to do 
+- good way to control behaviour -> change only as suggested no unkown behaviour
+- referential equality: every time we run our function, we get new oject because reference is different
+
+
+code reference: Player.js
+
+7. useImperativeHandler
+__________________________________________________________________________________________________
+
+link: https://www.youtube.com/watch?v=zpEyAOkytkU&list=PLZlA0Gpn_vH8EtggFGERCwMY5u5hOjf-h&index=12
+
+- used when we need to have custom ref
+- create a useImperativeHandler function like useEffect
+. pass the ref as a parameter 
+. give a return statement
+. add a parameter as a dependency
+- used when two components that are disconnected from one another are to be accessed and worked on together
+- can return multiple functions in one ref that can be used outside component
+- should not be used often only for ver specific use cases e.g. form validation of user input handling
+- whenever we need a child function component to expose some of its functionalities to the parent component. 
+- You use forwardRef in the parent component to pass the ref down to the child component.
+
+code reference: Form.js , Custominput.js
+
+8. useContext
+__________________________________________________________________________________________________
+
+- share data without passing props
+- consume value from the nearest parent provider
+- make a separate context function to define each context
