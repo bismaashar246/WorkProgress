@@ -1,0 +1,10 @@
+This application implements the CRUD functionality using React Hooks.
+This app stores an array of tasks containing task descriptions and due dates. 
+Each task's description can be edited by clicking the Edit button.
+
+Hooks that are used in it:
+useState
+useEffect
+useRef
+useReducer
+useCallback
