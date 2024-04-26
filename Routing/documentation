@@ -1,0 +1,164 @@
+Redux
+
+> Redux Toolkit:
+- for managing state in JavaScript applications.
+
+1. Learn to add new routes
+_________________________________________________________________________________________________
+
+code reference : Routing.js , Message.js
+
+1.a. action creator vs. action
+_________________________________________________________________________________________________
+
+link: https://www.geeksforgeeks.org/explain-actions-in-redux/
+
+> action : 
+- plain JavaScript objects
+- building blocks of Redux. 
+- const Actions = {
+     type: '',
+     payload: ''
+}
+
+- store: The store is the object which holds the state of the application.
+
+> action creator;
+- action creator are functions that return these actions. 
+- to-do list action creator:
+// Creating Action creator
+function AddToDo(task) {
+  return { type: 'ADD_TASK', task: task }
+}
+ 
+- bindActionCreators() method to bind multiple action creators to store in redux
+
+// Dispatching 
+store.dispatch(AddToDo('anything'));
+
+
+2. Protected Routing
+_________________________________________________________________________________________________
+
+link : https://dev.to/collins87mbathi/reactjs-protected-route-m3j
+
+> Redux Persist :
+- acts as a middleware in the Redux ecosystem.
+- specifying which parts of the state to persist and which storage engine to use
+- Without Redux Persist, any state stored in Redux would be lost when the application is closed or refreshed. 
+- useSelector: allow us to access our user object that is stored on our redux. 
+
+> Persist data
+-  A persistent (or non-volatile) storage medium is a medium where the data remains intact after it has
+  been written, until it is overwritten.
+
+code reference : Home.js , login.js
+
+
+3. Session based logins vs JWT logins
+_________________________________________________________________________________________________
+
+video link : https://www.youtube.com/watch?v=QzntvHz23tw
+
+> stateful vs. stateless authentication
+Stateful:
+- session id -> assign id to each user
+- when user logout -> revoke id
+- usecase : create a short-term authenticaion e.g. bank app
+- benefit : can be controlled from backend - we can delete
+- disadvantage : takes up memory , not for serverless
+
+Stateless:
+- JWT tokens used 
+- Token is created containing user info and is signed by the server with a secret key
+- Token can be stored anywhere
+- whenever user comes token validity is checked and logged in
+- duplicate key has secret key mismatch so secure (but not tooo secure)
+- benefit : no memory load , supoort serverless architecture
+- can be created for long term
+- disadvantage : difficult to manage
+
+3.a. Alternates to JWT logins
+_________________________________________________________________________________________________
+
+video link : https://www.scottbrady91.com/jose/alternatives-to-jwts
+
+> Fernet
+- uses a shared key
+- The payload in a Fernet token can be anything you want. Most implementations treat it as a string. 
+- extracted from a Ruby library
+- uses AES 128-CBC for encryption and HMAC-SHA256 for authentication 
+
+> OAuth Access Token vs Refresh Token
+- Access : short lived -> used to access protected resources on behalf of the authenticated user.
+- Refresh : long lived -> maintain continuous access to resources without requiring the user to re-authenticate.
+
+> Bearer Tokens: 
+- used in token-based authentication schemes. 
+- They are sent by the client to the server in the HTTP Authorization header and are typically self-contained
+- contain all the necessary information for the server to validate and process the request.
+
+> API Keys
+- API keys are simple tokens or strings passed along with API requests to identify the client making the request. 
+- They are often used for access control and rate limiting in web APIs.
+
+> XML-based tokens:
+- used for single sign-on (SSO) authentication. 
+- exchanged between identity providers (IdPs) and service providers (SPs) to authenticate users and grant
+  access to protected resources.
+
+> When is JWT not suitable for stateless?
+- when the token size is too big 
+
+3.b. authorization vs. authentication 
+_________________________________________________________________________________________________
+
+link : hhttps://auth0.com/docs/get-started/identity-fundamentals/authentication-and-authorization
+
+>authentication:
+- process of verifying who a user is, while 
+- e.g. you go through security in an airport, you show your ID to authenticate your identity
+- Determines whether users are who they claim to be
+- done first
+
+> authorization:
+- process of verifying what they have access to
+- e.g. you present your boarding pass to the flight attendant, so they can authorize you to board your flight 
+  and allow access to the plane.
+- Determines what users can and cannot acces
+- done after
+
+4. Implement redirects
+_________________________________________________________________________________________________
+
+link : https://dev.to/collins87mbathi/reactjs-protected-route-m3j
+
+> useNavigate()
+
+code reference : Message.js
+
+
+5. renderProps
+_________________________________________________________________________________________________
+
+link : https://dev.to/collins87mbathi/reactjs-protected-route-m3j
+
+> HOCs Vs RenderProps
+Render Prop:
+- sharing code between React components using a prop whose value is a function. 
+-High-order components (HOCs) wrap components with additional functionality, while render props pass rendering 
+  logic as a prop to components for flexible sharing of stateful logic or data.
+
+code reference : practice: counter1.js , counter2.js , wrapper.js
+
+
+6. Dynamic Routing ( link )
+_________________________________________________________________________________________________
+
+link : https://dev.to/collins87mbathi/reactjs-protected-route-m3j
+
+> useParams for dynamically changing the user id
+> add nested routes
+
+code reference : practice: Contactus.js
+
