@@ -1,0 +1,42 @@
+
+sync vs. async in react 
+_________________________________________________________________________________________________
+
+link : https://www.mendix.com/blog/asynchronous-vs-synchronous-programming/
+
+> sync
+- blocking architecture and is best for programming reactive systems
+- While one operation is being performed, other operations’ instructions are blocked
+-  single-thread,
+
+> async
+- a non-blocking architecture
+- doesn’t block further execution while one or more operations are in progress.
+-  multi-thread
+- enhances the user experience by decreasing the lag time between when a function is called 
+- Responsive UI : actions taking place simultaneously
+
+> useEffect case:
+
+When you initialize a state variable using useState, React schedules an update to the component's state, but this update doesn't happen synchronously. React batches state updates and performs them before the next paint to optimize performance. This means that when you update the state inside useEffect, the update doesn't take immediate effect within the same render cycle.
+
+- React hooks are async to save computational expenses.
+
+useNavigate vs. useHistory
+_________________________________________________________________________________________________
+
+link : https://www.dhiwise.com/post/understand-error-usehistory-not-found-in-react-router-dom
+> useHistory
+- The useHistory hook gives you access to the history instance.
+- provided a way to access the history stack.
+- accessing and manipulating the browser's history stack.
+- React Router Dom v6 has replaced useHistory with a new hook.
+- provides direct access to the history object which allows you to inspect the current location, listen for changes to the location, and programmatically navigate by pushing, replacing, or popping entries from the history stack.
+- syntax: history.push('/dashboard');
+
+>useNavigate
+- returns a navigate function
+- syntax: navigate('/dashboard');
+
+
+//react.new
