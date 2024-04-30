@@ -1,0 +1,77 @@
+________________________________________________________________________________________________________________
+
+Implement redux-persist (whitelist & blacklist reducers)
+________________________________________________________________________________________________________________
+
+> Process
+- npm install redux-persist
+- make persist Reducer : to wrap app's root reducers and pass to persistStore
+- persistStore : ensure your redux state is stored to persist storage
+- persistor passed to the application
+
+________________________________________________________________________________________________________________
+
+Formik
+________________________________________________________________________________________________________________
+
+link: https://medium.com/@louis.young0420/react-hook-form-vs-formik-a-friendly-comparison-d2fc0650f1e3
+
+> form handling library in react
+> provides built-in support for validation and error handling
+> wrap a component in Formik component
+> use Field and Error Message tags
+-
+
+code reference: 
+
+________________________________________________________________________________________________________________
+
+Reak Hook Form
+________________________________________________________________________________________________________________
+
+link: https://react-hook-form.com
+
+useForm() link : https://react-hook-form.com/docs/useform 
+
+> npm install react-hook-form
+> Register fields: register component into the hook -> make value available for form validation and submission.
+> minimize unnecessary re-renders
+
+> useForm() hook: custom hook that manages forms with ease. 
+- mode: Validation strategy before submitting behaviour.
+- reValidateMode: Validation strategy after submitting behaviour.
+- defaultValues: Default values for the form.
+- values: Reactive values to update the form values.
+- errors: Reactive errors to update the form errors.
+- resetOptions: Option to reset form state update while updating new form values.
+- criteriaMode: Display all validation errors or one at a time.
+- shouldFocusError: Enable or disable built-in focus management.
+- delayError: Delay error from appearing instantly.
+- shouldUseNativeValidation: Use browser built-in form constraint API.
+- shouldUnregister: Enable and disable input unregister after unmount.
+
+code reference: UseForm.jsx
+
+________________________________________________________________________________________________________________
+
+Difference between formik & react-hook-form
+________________________________________________________________________________________________________________
+
+link: https://medium.com/@louis.young0420/react-hook-form-vs-formik-a-friendly-comparison-d2fc0650f1e3
+
+> React Hook Form 
+- uses uncontrolled components and avoids re-rendering unnecessary parts 
+- better for large forms
+- relies on react hook -> handleSubmit , register , setValue
+- straightforward syntac using register and errors
+- is new since 2019
+
+> formik
+- uses controlled components, so dditional re-renders when form state changes
+- uses shouldUpdate to control the rendering
+- high-level abstraction, complex and comprehensive set of features
+- provides declarative approach as well as easy approach using errors
+- older since 2016
+
+code reference:
+
