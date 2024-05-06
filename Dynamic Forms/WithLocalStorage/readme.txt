@@ -1,3 +1,0 @@
-In this code, local storage is used to directly access the local storage
-
-The data is added and retrieved using setItem() getItem() functions.
