@@ -3,11 +3,28 @@ ________________________________________________________________________________
 Implement redux-persist (whitelist & blacklist reducers)
 ________________________________________________________________________________________________________________
 
+link: 
+
+> whitelist
+- the arguments you want to persist
+
+> blacklist
+- the arguments you don't want to persist
+
 > Process
 - npm install redux-persist
 - make persist Reducer : to wrap app's root reducers and pass to persistStore
+
 - persistStore : ensure your redux state is stored to persist storage
 - persistor passed to the application
+
+- userSlice : is a collection of Redux-related logic for a specific feature in your application. 
+- It typically includes reducers and action creators.
+
+- reducer: is a function that specifies how the application's state changes in response to actions 
+- takes the current state and an action as arguments
+
+- configureStore : provided by Redux Toolkit to create a Redux store.
 
 ________________________________________________________________________________________________________________
 
@@ -20,7 +37,9 @@ link: https://medium.com/@louis.young0420/react-hook-form-vs-formik-a-friendly-c
 > provides built-in support for validation and error handling
 > wrap a component in Formik component
 > use Field and Error Message tags
--
+
+- <Field> :  used in situations where you want Formik to manage the state of the form fields for you.
+- <ErrorMessage> : used to display error messages related to form fields when validation fails. 
 
 code reference: 
 
@@ -65,13 +84,38 @@ link: https://medium.com/@louis.young0420/react-hook-form-vs-formik-a-friendly-c
 - relies on react hook -> handleSubmit , register , setValue
 - straightforward syntac using register and errors
 - is new since 2019
+- better for forms with more fields
 
 > formik
-- uses controlled components, so dditional re-renders when form state changes
+- uses controlled components, so additional re-renders when form state changes
 - uses shouldUpdate to control the rendering
 - high-level abstraction, complex and comprehensive set of features
 - provides declarative approach as well as easy approach using errors
 - older since 2016
+- okay for small forms
 
 code reference:
+
+________________________________________________________________________________________________________________
+
+Benchmark in terms of rendering
+________________________________________________________________________________________________________________
+
+- useForm() hook is prefered when more fields since it prevents unnecessary re-rendering. 
+
+- For small to medium-sized projects with simple forms, React Hook Form might be a good fit due to its simplicity and performance. For larger and more complex forms, especially those with complex validation and submission logic, Formik might be a better choice.
+
+- Formik better when using class , useForm() better when using function
+
+
+
+
+
+
+
+
+
+
+
+
 
