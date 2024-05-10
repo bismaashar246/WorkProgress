@@ -1,0 +1,1 @@
+This code implements redux saga and uses generator function and saga side effects to fetch data from the json file
