@@ -2,7 +2,7 @@ Redux Toolkit
 
 - npm install @reduxjs/toolkit react-redux
 - slice: collection of actions and reducer login for different components of an app 
-e.g. blogs ______________________________________________________________________________________________
+e.g. blogs ___________________________________________________________________________________
 
 a. redux-thunk
 ______________________________________________________________________________________________
@@ -37,6 +37,7 @@ ________________________________________________________________________________
 video link: https://www.youtube.com/watch?v=gu3FfmgkwUc&t=403s
 
 > What are generators?
+- can be paused and resumed.
 Notes:
 - it is a type of iterator (that has a .next() method)
 - has three things:
@@ -60,6 +61,16 @@ Notes:
 - if we send .next() call twice it remembers what was sent in the previous .next() 
 
 - generators can pause and when we call .next() it starts running again
+
+> Redux saga effects: (in same code)
+1. call : invokes the fetchPosts function asynchronously
+2. It dispatches the fetchAllPostsFulfilled action  
+3. takeLatest : istens for the latest occurrence of the fetchAllPostsPending action type. 
+ If multiple fetchAllPostsPending actions are dispatched, only the latest one will be processed.
+
+- used to create the generator functions
+- action creators : create in slice , imported in saga middleware 
+why? to dispatch actions to update the state managed by the slice reducer
 
 
 
